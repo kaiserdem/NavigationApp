@@ -9,11 +9,10 @@ import SwiftUI
 
 struct WorkoutsScreen: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
     var body: some View {
-        NavigationStack(path: $navController.workoutsStack) {
+        NavigationStack(path: $coordinator.workoutsStack) {
             VStack {
                 
                 Text("Workouts")
@@ -21,7 +20,7 @@ struct WorkoutsScreen: View {
                 Spacer()
                 
                 Button {
-                    navController.workoutsStack.append("WorkoutsTwo")
+                    coordinator.workoutsStack.append(Workouts.workoutsTwo)
                 } label: {
                     Text("Go to Workouts Screen Two")
                 }
@@ -30,8 +29,8 @@ struct WorkoutsScreen: View {
                 .background(Color.white)
 
                 Button {
-                    navController.workoutsStack.append("WorkoutsTwo")
-                    navController.workoutsStack.append("WorkoutsThree")
+                    coordinator.workoutsStack.append(Workouts.workoutsTwo)
+                    coordinator.workoutsStack.append(Workouts.workoutsThree)
                 } label: {
                     Text("Go to Workouts Screen Three")
                 }
@@ -41,7 +40,7 @@ struct WorkoutsScreen: View {
                 Spacer()
                 
                 Button {
-                    activeTab = .nutrition
+                    coordinator.activeTab = .nutrition
                 } label: {
                     Text("Go to Tab Nutition Screen")
                 }
@@ -50,8 +49,8 @@ struct WorkoutsScreen: View {
                 .background(Color.white)
                 
                 Button {
-                    activeTab = .nutrition
-                    navController.nutritionStack.append("NutitionTwo")
+                    coordinator.activeTab = .nutrition
+                    coordinator.nutritionStack.append(Nutition.nutitionTwo)
 
                 } label: {
                     Text("Go to Tab Nutition Screen 2")
@@ -62,7 +61,7 @@ struct WorkoutsScreen: View {
                 Spacer()
                 
                 Button {
-                    activeTab = .login
+                    coordinator.activeTab = .login
                 } label: {
                     Text("Back to Login screen")
                 }
@@ -71,22 +70,32 @@ struct WorkoutsScreen: View {
                 .background(Color.white)
                 Spacer()
                                 
-                    .navigationDestination(for: String.self) { textValue in
+                    .navigationDestination(for: Workouts.self) { screen in
                         
-                        switch textValue {
-                        case "WorkoutsTwo":
-                            WorkoutsScreenTwo(activeTab: $activeTab, navController: navController)
+                        switch screen {
+                        case .workoutsTwo:
+                            WorkoutsScreenTwo(coordinator: coordinator)
                             
-                        case "WorkoutsThree":
-                            WorkoutsScreenThree(activeTab: $activeTab, navController: navController)
-                            
-                        case "NutitionTwo":
-                            NutritionScreenTwo(activeTab: $activeTab, navController: navController)
+                        case .workoutsThree:
+                            WorkoutsScreenThree(coordinator: coordinator)
+
+                        default:
+                            Text("Detail with some view")
+                        }
+                    }
+                
+                    .navigationDestination(for: Nutition.self) { screen in
+                        
+                        switch screen {
+                        case .nutitionTwo:
+                            NutritionScreenTwo(coordinator: coordinator)
                             
                         default:
                             Text("Detail with some view")
                         }
                     }
+                
+                
             }
             .frame(maxWidth: .infinity)
             .background(Color.purple.opacity(0.7))

@@ -10,19 +10,17 @@ import SwiftUI
 
 struct NutritionScreen: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
     var body: some View {
-        NavigationStack(path: $navController.nutritionStack) {
+        NavigationStack(path: $coordinator.nutritionStack) {
             VStack {
                 Text("Nutrition Screen")
                     .font(.title)
                 Spacer()
                 
                 Button {
-                    activeTab = .nutrition
-                    navController.nutritionStack.append("NutitionTwo")
+                    coordinator.nutritionStack.append("Nutition.nutitionTwo")
                 } label: {
                     Text("Go to Nutrition Screen Two")
                 }
@@ -32,8 +30,8 @@ struct NutritionScreen: View {
                 Spacer()
                 
                 Button {
-                    activeTab = .workouts
-                    navController.workoutsStack.append("WorkoutsTwo")
+                    coordinator.activeTab = .workouts
+                    coordinator.workoutsStack.append(Workouts.workoutsTwo)
                 } label: {
                     Text("Go to Workouts Screen Two")
                 }
@@ -42,15 +40,23 @@ struct NutritionScreen: View {
                 .background(.white)
                 Spacer()
                 
-                    .navigationDestination(for: String.self) { textValue in
-                        
-                        switch textValue {
-                        case "NutitionTwo":
-                            NutritionScreenTwo(activeTab: $activeTab, navController: navController)
+                    .navigationDestination(for: String.self) { screen in
+                        switch screen {
+                        case "Nutition.nutitionTwo":
+                            NutritionScreenTwo(coordinator: coordinator)
                         default:
                             Text("Detail with some view")
                         }
                     }
+                
+//                    .navigationDestination(for: Workouts.self) { screen in
+//                        switch screen {
+//                        case .workoutsTwo:
+//                            WorkoutsScreenTwo(coordinator: coordinator)
+//                        default:
+//                            Text("Detail with some view")
+//                        }
+//                    }
             }
             .frame(maxWidth: .infinity)
             .background(Color.green.opacity(0.6))

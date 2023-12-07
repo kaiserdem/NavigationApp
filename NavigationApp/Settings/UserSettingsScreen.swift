@@ -9,12 +9,11 @@ import SwiftUI
 
 struct UserSettingsScreen: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
     var body: some View {
         
-        NavigationStack(path: $navController.settingsStack) {
+        NavigationStack(path: $coordinator.settingsStack) {
             
             Text("UserSettingsScreen")
                 .font(.title)
@@ -22,16 +21,10 @@ struct UserSettingsScreen: View {
             
             
             Button("Go Workouts") {
-                activeTab = .workouts
+                coordinator.activeTab = .workouts
             }
             Spacer()
             
         }
     }
 }
-
-//struct UserSettingsScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserSettingsScreen()
-//    }
-//}

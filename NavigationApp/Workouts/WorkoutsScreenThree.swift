@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WorkoutsScreenThree: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
     var body: some View {
         VStack {
@@ -20,7 +19,7 @@ struct WorkoutsScreenThree: View {
                 Spacer()
             
             Button {
-                navController.workoutsStack = NavigationPath()
+                coordinator.workoutsStack = NavigationPath()
             } label: {
                 Text("Go to Workouts first")
             }
@@ -28,8 +27,8 @@ struct WorkoutsScreenThree: View {
             .background(Color.white)
             
             Button {
-                if navController.workoutsStack.count > 0  {
-                    navController.workoutsStack.removeLast()
+                if coordinator.workoutsStack.count > 0  {
+                    coordinator.workoutsStack.removeLast()
                 }
             } label: {
                 Text("Go to Workouts Two")
@@ -39,7 +38,7 @@ struct WorkoutsScreenThree: View {
             Spacer()
             
             Button {
-                activeTab = .nutrition
+                coordinator.activeTab = .nutrition
             } label: {
                 Text("Go to Tab Nutrition")
             }
@@ -49,6 +48,5 @@ struct WorkoutsScreenThree: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.purple.opacity(0.2))
-        .toolbar(.hidden, for: .tabBar)
     }
 }

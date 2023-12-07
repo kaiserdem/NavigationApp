@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WorkoutsScreenTwo: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
        var body: some View {
            VStack {
@@ -19,9 +18,9 @@ struct WorkoutsScreenTwo: View {
                    .font(.title)
                Spacer()
                
-              
                Button {
-                   navController.workoutsStack.append("WorkoutsThree")
+                   coordinator.workoutsStack.append(Workouts.workoutsThree)
+                   
                } label: {
                    Text("Go to Workouts Screen Three")
                }
@@ -30,7 +29,7 @@ struct WorkoutsScreenTwo: View {
                Spacer()
                
                Button {
-                   activeTab = .nutrition
+                   coordinator.activeTab = .nutrition
                } label: {
                    Text("Go to Tab Nutition Screen first")
                }
@@ -38,8 +37,8 @@ struct WorkoutsScreenTwo: View {
                .background(Color.white)
                
                Button {
-                   activeTab = .nutrition
-                   navController.nutritionStack.append("NutitionTwo")
+                   coordinator.activeTab = .nutrition
+                   coordinator.nutritionStack.append(Nutition.nutitionTwo)
 
                } label: {
                    Text("Go to Tab Nutition Screen Two")
@@ -48,12 +47,11 @@ struct WorkoutsScreenTwo: View {
                .background(Color.white)
                Spacer()
                
-               
-                   .navigationDestination(for: String.self) { textValue in
+                   .navigationDestination(for: Workouts.self) { screen in
                        
-                       switch textValue {
-                       case "WorkoutsThree":
-                           WorkoutsScreenThree(activeTab: $activeTab, navController: navController)
+                       switch screen {
+                       case .workoutsThree:
+                           WorkoutsScreenThree(coordinator: coordinator)
                            
                        default:
                            Text("Detail with some view")
@@ -64,29 +62,5 @@ struct WorkoutsScreenTwo: View {
            }
            .frame(maxWidth: .infinity, maxHeight: .infinity)
            .background(Color.purple.opacity(0.4))
-           .toolbar(.hidden, for: .tabBar)
        }
-//    //let article: Person
-//    let text: String
-//
-//
-//    var body: some View {
-//        NavigationStack(path: $navController.workoutsStack) {
-//        VStack {
-//            Text("Workouts Screen Two")
-//                .font(.title)
-//            Spacer()
-//
-//            //            NavigationLink("Go to Workouts Screen 3") {
-//            //                WorkoutsScreenThree(navController: navController, article: Person(titleP: "gfe", authorP: "fd"))
-//            //            }
-//            //            Spacer()
-//            //        }
-//            //        .navigationDestination(for: Person.self) { person in
-//            //            WorkoutsScreenThree(navController: navController, article: person)
-//                }
-//        }
-//        .background(Color.purple)
-//        .toolbar(.hidden, for: .tabBar)
-//    }
 }

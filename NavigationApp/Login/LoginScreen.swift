@@ -9,26 +9,43 @@ import SwiftUI
 
 struct LoginScreen: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
     
     var body: some View {
-        NavigationStack(path: $navController.settingsStack) {
+        NavigationStack(path: $coordinator.loginsStack) {
             VStack {
                 
                 Text("Login Screen")
                     .font(.title)
                 Spacer()
                 
-                
-                Button("Go to Tab Workouts") {
-                    activeTab = .workouts
+                Button("Go to Login Two") {
+                    coordinator.loginsStack.append(Login.loginTwo)
                 }
                 .foregroundColor(.purple)
                 .padding(10)
                 .background(Color.white)
                 Spacer()
+                
+                Button("Go to Tab Workouts") {
+                    coordinator.activeTab = .workouts
+                }
+                .foregroundColor(.purple)
+                .padding(10)
+                .background(Color.white)
+                Spacer()
+                
             }
+            .navigationDestination(for: Login.self) { screen in
+                switch screen {
+                case .loginTwo:
+                    LoginScreenTwo(coordinator: coordinator)
+                    
+                default:
+                    Text("Detail with some view")
+                }
+            }
+            
             .frame(maxWidth: .infinity)
             .background(Color.yellow.opacity(0.5))
         }

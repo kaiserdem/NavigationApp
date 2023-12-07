@@ -1,0 +1,27 @@
+//
+//  LoginScreenTwo.swift
+//  NavigationApp
+//
+//  Created by kaiserdem  on 05.12.2023.
+//
+
+import SwiftUI
+
+struct LoginScreenTwo: View {
+    
+    @ObservedObject var coordinator: Coordinator
+    
+    var body: some View {
+        NavigationStack(path: $coordinator.loginsStack) {
+            VStack {
+                
+                Text("Login Screen Two")
+                    .font(.title)
+                Spacer()
+                
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color.yellow.opacity(0.5))
+        }
+    }
+}

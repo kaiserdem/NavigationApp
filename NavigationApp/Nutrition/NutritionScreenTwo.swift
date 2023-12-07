@@ -9,8 +9,7 @@ import SwiftUI
 
 struct NutritionScreenTwo: View {
     
-    @Binding var activeTab: Tab
-    @ObservedObject var navController: NavController
+    @ObservedObject var coordinator: Coordinator
         
     var body: some View {
         VStack {
@@ -21,6 +20,5 @@ struct NutritionScreenTwo: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.green.opacity(0.4))
-        .toolbar(.hidden, for: .tabBar)
     }
 }

@@ -10,9 +10,10 @@
 		7543E2482B1C78C5003C6053 /* WorkoutsScreenThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7543E2472B1C78C5003C6053 /* WorkoutsScreenThree.swift */; };
 		754802C22B1DE1B4004A0972 /* NutritionScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754802C12B1DE1B4004A0972 /* NutritionScreenTwo.swift */; };
 		754802C52B1DFBEA004A0972 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754802C42B1DFBEA004A0972 /* LoginScreen.swift */; };
-		754802C82B1F359D004A0972 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754802C72B1F359D004A0972 /* NavController.swift */; };
+		754802C82B1F359D004A0972 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754802C72B1F359D004A0972 /* Coordinator.swift */; };
+		754802CE2B1F94B6004A0972 /* LoginScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754802CD2B1F94B6004A0972 /* LoginScreenTwo.swift */; };
 		75F2ED282B1B71DC007937A9 /* NavigationAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F2ED272B1B71DC007937A9 /* NavigationAppApp.swift */; };
-		75F2ED2A2B1B71DC007937A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F2ED292B1B71DC007937A9 /* ContentView.swift */; };
+		75F2ED2A2B1B71DC007937A9 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F2ED292B1B71DC007937A9 /* BaseView.swift */; };
 		75F2ED2C2B1B71DE007937A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F2ED2B2B1B71DE007937A9 /* Assets.xcassets */; };
 		75F2ED2F2B1B71DE007937A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F2ED2E2B1B71DE007937A9 /* Preview Assets.xcassets */; };
 		75F2ED362B1B74EC007937A9 /* WorkoutsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F2ED352B1B74EC007937A9 /* WorkoutsScreen.swift */; };
@@ -25,10 +26,11 @@
 		7543E2472B1C78C5003C6053 /* WorkoutsScreenThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreenThree.swift; sourceTree = "<group>"; };
 		754802C12B1DE1B4004A0972 /* NutritionScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionScreenTwo.swift; sourceTree = "<group>"; };
 		754802C42B1DFBEA004A0972 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		754802C72B1F359D004A0972 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		754802C72B1F359D004A0972 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		754802CD2B1F94B6004A0972 /* LoginScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTwo.swift; sourceTree = "<group>"; };
 		75F2ED242B1B71DC007937A9 /* NavigationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F2ED272B1B71DC007937A9 /* NavigationAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppApp.swift; sourceTree = "<group>"; };
-		75F2ED292B1B71DC007937A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		75F2ED292B1B71DC007937A9 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		75F2ED2B2B1B71DE007937A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75F2ED2E2B1B71DE007937A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		75F2ED352B1B74EC007937A9 /* WorkoutsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreen.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				754802C42B1DFBEA004A0972 /* LoginScreen.swift */,
+				754802CD2B1F94B6004A0972 /* LoginScreenTwo.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -86,7 +89,7 @@
 		754802C62B1F351B004A0972 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				754802C72B1F359D004A0972 /* NavController.swift */,
+				754802C72B1F359D004A0972 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -111,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				75F2ED272B1B71DC007937A9 /* NavigationAppApp.swift */,
-				75F2ED292B1B71DC007937A9 /* ContentView.swift */,
+				75F2ED292B1B71DC007937A9 /* BaseView.swift */,
 				754802C62B1F351B004A0972 /* Coordinator */,
 				754802C32B1DFBC9004A0972 /* Login */,
 				7543E2462B1C78A3003C6053 /* Workouts */,
@@ -206,10 +209,11 @@
 				754802C52B1DFBEA004A0972 /* LoginScreen.swift in Sources */,
 				75F2ED3A2B1B7504007937A9 /* UserSettingsScreen.swift in Sources */,
 				75F2ED382B1B74F7007937A9 /* NutritionScreen.swift in Sources */,
-				754802C82B1F359D004A0972 /* NavController.swift in Sources */,
-				75F2ED2A2B1B71DC007937A9 /* ContentView.swift in Sources */,
+				754802C82B1F359D004A0972 /* Coordinator.swift in Sources */,
+				75F2ED2A2B1B71DC007937A9 /* BaseView.swift in Sources */,
 				7543E2482B1C78C5003C6053 /* WorkoutsScreenThree.swift in Sources */,
 				75F2ED362B1B74EC007937A9 /* WorkoutsScreen.swift in Sources */,
+				754802CE2B1F94B6004A0972 /* LoginScreenTwo.swift in Sources */,
 				75F2ED282B1B71DC007937A9 /* NavigationAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NavigationApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 7729HYB5LH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -367,6 +372,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NavigationApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 7729HYB5LH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
