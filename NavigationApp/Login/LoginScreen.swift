@@ -10,7 +10,8 @@ import SwiftUI
 struct LoginScreen: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
     var body: some View {
         NavigationStack(path: $coordinator.loginsStack) {
             VStack {
@@ -28,7 +29,7 @@ struct LoginScreen: View {
                 Spacer()
                 
                 Button("Go to Tab Workouts") {
-                    coordinator.activeTab = .workouts
+                    activeTab = .workouts
                 }
                 .foregroundColor(.purple)
                 .padding(10)
@@ -39,7 +40,7 @@ struct LoginScreen: View {
             .navigationDestination(for: Login.self) { screen in
                 switch screen {
                 case .loginTwo:
-                    LoginScreenTwo(coordinator: coordinator)
+                    LoginScreenTwo(coordinator: coordinator, activeTab: $activeTab)
                     
                 default:
                     Text("Detail with some view")

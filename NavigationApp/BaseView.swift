@@ -10,43 +10,38 @@ import SwiftUI
 struct BaseView: View {
     
     @ObservedObject var coordinator = Coordinator()
+    @State var activeTab = Tab.login
+
     var body: some View {
-        #warning("corrects issues of appears tab with delay provokes a problem of not working navigation")
-        //NavigationStack {
-            if coordinator.activeTab == .login {
-                LoginScreen(coordinator: coordinator)
+            if activeTab == .login {
+                LoginScreen(coordinator: coordinator, activeTab: $activeTab)
             } else {
-                TabView(selection: $coordinator.activeTab.onUpdate {
-                    coordinator.tabClicked(coordinator.activeTab)
+                TabView(selection: $activeTab.onUpdate {
+                    coordinator.tabClicked(activeTab)
                 }) {
-                    WorkoutsScreen(coordinator: coordinator)
+                    WorkoutsScreen(coordinator: coordinator, activeTab: $activeTab)
                         .tabItem {
                             Label("Workouts", systemImage: "figure.run")
                         }
                         .tag(Tab.workouts)
                     
-                    NutritionScreen(coordinator: coordinator)
+                    NutritionScreen(coordinator: coordinator, activeTab: $activeTab)
                         .tabItem {
                             Label("Nutrition", systemImage: "fork.knife.circle.fill")
                         }
                         .tag(Tab.nutrition)
                     
-                    UserSettingsScreen(coordinator: coordinator)
+                    UserSettingsScreen(coordinator: coordinator, activeTab: $activeTab)
                         .tabItem {
                             Label("Settings", systemImage: "person.crop.circle")
                         }
                         .tag(Tab.settings)
                     
                 }
-                .onChange(of: coordinator.activeTab) { tab in
+                .onChange(of: activeTab) { tab in
                     print(tab)
                 }
             }
-        //}
-    }
-    
-    func setCurrentTab(_ tab: Tab) {
-        coordinator.activeTab = tab
     }
 
 }

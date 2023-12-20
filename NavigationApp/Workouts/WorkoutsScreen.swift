@@ -10,7 +10,8 @@ import SwiftUI
 struct WorkoutsScreen: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
     var body: some View {
         NavigationStack(path: $coordinator.workoutsStack) {
             VStack {
@@ -40,7 +41,7 @@ struct WorkoutsScreen: View {
                 Spacer()
                 
                 Button {
-                    coordinator.activeTab = .nutrition
+                    activeTab = .nutrition
                 } label: {
                     Text("Go to Tab Nutition Screen")
                 }
@@ -49,7 +50,7 @@ struct WorkoutsScreen: View {
                 .background(Color.white)
                 
                 Button {
-                    coordinator.activeTab = .nutrition
+                    activeTab = .nutrition
                     coordinator.nutritionStack.append(Nutition.nutitionTwo)
 
                 } label: {
@@ -61,7 +62,7 @@ struct WorkoutsScreen: View {
                 Spacer()
                 
                 Button {
-                    coordinator.activeTab = .login
+                    activeTab = .login
                 } label: {
                     Text("Back to Login screen")
                 }
@@ -74,10 +75,10 @@ struct WorkoutsScreen: View {
                         
                         switch screen {
                         case .workoutsTwo:
-                            WorkoutsScreenTwo(coordinator: coordinator)
+                            WorkoutsScreenTwo(coordinator: coordinator, activeTab: $activeTab)
                             
                         case .workoutsThree:
-                            WorkoutsScreenThree(coordinator: coordinator)
+                            WorkoutsScreenThree(coordinator: coordinator, activeTab: $activeTab)
 
                         default:
                             Text("Detail with some view")
@@ -88,7 +89,7 @@ struct WorkoutsScreen: View {
                         
                         switch screen {
                         case .nutitionTwo:
-                            NutritionScreenTwo(coordinator: coordinator)
+                            NutritionScreenTwo(coordinator: coordinator, activeTab: $activeTab)
                             
                         default:
                             Text("Detail with some view")

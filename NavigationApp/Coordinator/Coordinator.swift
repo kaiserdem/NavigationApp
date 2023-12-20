@@ -10,16 +10,17 @@ import SwiftUI
 
 
 class Coordinator: ObservableObject {
-    @Published var activeTab = Tab.login
     
+    private var currentTab = Tab.login
+
     @Published var loginsStack = NavigationPath()
     @Published var workoutsStack = NavigationPath()
     @Published var nutritionStack = NavigationPath()
-    @Published var settingsStack = NavigationPath()    
+    @Published var settingsStack = NavigationPath()
     
     func tabClicked(_ tab: Tab) {
         
-        if tab == activeTab {
+        if tab == currentTab {
             switch tab {
 
             case .workouts:
@@ -33,7 +34,7 @@ class Coordinator: ObservableObject {
                 
             }
         }
-        activeTab = tab
+        currentTab = tab
     }
 }
 

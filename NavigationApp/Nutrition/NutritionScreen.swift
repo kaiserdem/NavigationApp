@@ -11,7 +11,8 @@ import SwiftUI
 struct NutritionScreen: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
     var body: some View {
         NavigationStack(path: $coordinator.nutritionStack) {
             VStack {
@@ -30,7 +31,7 @@ struct NutritionScreen: View {
                 Spacer()
                 
                 Button {
-                    coordinator.activeTab = .workouts
+                    activeTab = .workouts
                     coordinator.workoutsStack.append(Workouts.workoutsTwo)
                 } label: {
                     Text("Go to Workouts Screen Two")
@@ -43,7 +44,7 @@ struct NutritionScreen: View {
                     .navigationDestination(for: String.self) { screen in
                         switch screen {
                         case "Nutition.nutitionTwo":
-                            NutritionScreenTwo(coordinator: coordinator)
+                            NutritionScreenTwo(coordinator: coordinator, activeTab: $activeTab)
                         default:
                             Text("Detail with some view")
                         }

@@ -10,7 +10,8 @@ import SwiftUI
 struct WorkoutsScreenTwo: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
        var body: some View {
            VStack {
                
@@ -29,7 +30,7 @@ struct WorkoutsScreenTwo: View {
                Spacer()
                
                Button {
-                   coordinator.activeTab = .nutrition
+                   activeTab = .nutrition
                } label: {
                    Text("Go to Tab Nutition Screen first")
                }
@@ -37,7 +38,7 @@ struct WorkoutsScreenTwo: View {
                .background(Color.white)
                
                Button {
-                   coordinator.activeTab = .nutrition
+                   activeTab = .nutrition
                    coordinator.nutritionStack.append(Nutition.nutitionTwo)
 
                } label: {
@@ -51,7 +52,7 @@ struct WorkoutsScreenTwo: View {
                        
                        switch screen {
                        case .workoutsThree:
-                           WorkoutsScreenThree(coordinator: coordinator)
+                           WorkoutsScreenThree(coordinator: coordinator, activeTab: $activeTab)
                            
                        default:
                            Text("Detail with some view")

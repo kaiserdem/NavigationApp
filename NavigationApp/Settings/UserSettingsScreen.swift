@@ -10,7 +10,8 @@ import SwiftUI
 struct UserSettingsScreen: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
     var body: some View {
         
         NavigationStack(path: $coordinator.settingsStack) {
@@ -21,7 +22,7 @@ struct UserSettingsScreen: View {
             
             
             Button("Go Workouts") {
-                coordinator.activeTab = .workouts
+                activeTab = .workouts
             }
             Spacer()
             

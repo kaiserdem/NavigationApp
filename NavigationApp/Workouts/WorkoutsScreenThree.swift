@@ -10,7 +10,8 @@ import SwiftUI
 struct WorkoutsScreenThree: View {
     
     @ObservedObject var coordinator: Coordinator
-    
+    @Binding var activeTab: Tab
+
     var body: some View {
         VStack {
             
@@ -38,7 +39,7 @@ struct WorkoutsScreenThree: View {
             Spacer()
             
             Button {
-                coordinator.activeTab = .nutrition
+                activeTab = .nutrition
             } label: {
                 Text("Go to Tab Nutrition")
             }

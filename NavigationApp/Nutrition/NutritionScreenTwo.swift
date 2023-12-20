@@ -10,7 +10,8 @@ import SwiftUI
 struct NutritionScreenTwo: View {
     
     @ObservedObject var coordinator: Coordinator
-        
+    @Binding var activeTab: Tab
+
     var body: some View {
         VStack {
             
