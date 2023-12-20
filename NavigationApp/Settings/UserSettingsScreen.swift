@@ -26,6 +26,18 @@ struct UserSettingsScreen: View {
             }
             Spacer()
             
+            Button {
+                activeTab = .workouts
+                coordinator.workoutsStack.append(Workouts.workoutsTwo)
+            } label: {
+                Text("Go to Workouts Screen Two")
+            }
+            .padding(10)
+            .foregroundColor(.purple)
+            .background(.white)
+            Spacer()
+            
+            
         }
     }
 }
