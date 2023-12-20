@@ -4,7 +4,7 @@
 
 ## Main functionality
 
-Using core data and uikit
+Using swiftui
 
 ## License
 
